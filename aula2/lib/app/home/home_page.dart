@@ -1,4 +1,5 @@
 import 'package:aula2/app/create_transfer/create_transfer.dart';
+import 'package:aula2/app/create_transfer/create_transfer_form.dart';
 import 'package:flutter/material.dart';
 
 //CreateTransfer
@@ -14,9 +15,12 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: RaisedButton(
           color: Colors.blue,
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => CreateTransfer()));
+          onPressed: () async {
+            final transferencia = await Navigator.push(context,
+                MaterialPageRoute(builder: (context) => CreateTransferForm()));
+            print(transferencia);
+            //TODO
+            //Exibir a transferencia na tela de Home
           },
           child: Text(
             "Navegar para Formulario",
