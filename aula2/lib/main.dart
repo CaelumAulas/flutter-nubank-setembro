@@ -21,7 +21,6 @@
 
 // - NAVEGACAO?
 
-import 'package:aula2/app/create_transfer/create_transfer.dart';
 import 'package:aula2/app/home/home_page.dart';
 import 'package:flutter/material.dart';
 
