@@ -7,7 +7,7 @@ Day 2:
 
 Day 3: 
 4 - Using a dynamic widget list
-
+  - Implement tests 
 Day 4:
 5 - Using StatefulWidgets
 
