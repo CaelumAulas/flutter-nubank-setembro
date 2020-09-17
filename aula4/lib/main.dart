@@ -38,6 +38,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //Criar um selecionador de itens da lista
+  // O desafio eh trocar a cor quando o item for selecionado;
   final scaffoldKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
