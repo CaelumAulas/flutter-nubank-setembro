@@ -1,4 +1,5 @@
 import 'package:aula5/app/home/home_page.dart';
+import 'package:aula5/app/login/login_controller.dart';
 import 'package:aula5/main.dart';
 import 'package:flutter/material.dart';
 
@@ -22,42 +23,27 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String email;
-  String password;
-  final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final controller = LoginController();
 
-  String validatorEmail(String email) {
-    if (email == null || email.isEmpty || !email.contains('@')) {
-      return "Email inválido";
-    }
-    return null;
+  void error() {
+    scaffoldKey.currentState.showBottomSheet((context) => BottomSheet(
+        onClosing: () {},
+        builder: (_) => Container(
+              width: MediaQuery.of(context).size.width,
+              height: 150,
+              child: Center(
+                  child: Text(
+                "Email e/ou senha inválidos",
+                style: TextStyle(fontSize: 20),
+              )),
+            )));
   }
 
-  String validatorPassword(String value) =>
-      value.isEmpty ? "Digite um valor" : null;
-
-  bool isValid() {
-    final form = formKey.currentState;
-
-    if (form.validate()) {
-      form.save();
-      return true;
-    } else {
-      return false;
-    }
+  void success() {
+    AppNavigator.to
+        .pushReplacementNamed("/home", arguments: {"email": controller.email});
   }
-
-  bool authorization() {
-    if (email == 'email@email.com' && password == '123456') {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  void saveEmail(String value) => email = value;
-  void savePassword(String value) => password = value;
 
   @override
   Widget build(BuildContext context) {
@@ -67,20 +53,20 @@ class _LoginPageState extends State<LoginPage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32),
         child: Form(
-            key: formKey,
+            key: controller.formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextFormField(
                   decoration: InputDecoration(labelText: "Email"),
-                  validator: validatorEmail,
-                  onSaved: saveEmail,
+                  validator: controller.validatorEmail,
+                  onSaved: controller.saveEmail,
                 ),
                 TextFormField(
                   obscureText: true,
                   decoration: InputDecoration(labelText: "Senha"),
-                  validator: validatorPassword,
-                  onSaved: savePassword,
+                  validator: controller.validatorPassword,
+                  onSaved: controller.savePassword,
                 ),
                 SizedBox(
                   height: 16,
@@ -90,27 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.orange,
                     child: Text("Entrar"),
                     onPressed: () {
-                      if (isValid()) {
-                        print("$email:$password");
-                        if (authorization()) {
-                          AppNavigator.to.pushReplacement(MaterialPageRoute(
-                              builder: (context) => HomePage()));
-                        } else {
-                          scaffoldKey.currentState
-                              .showBottomSheet((context) => BottomSheet(
-                                  onClosing: () {},
-                                  builder: (_) => Container(
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        height: 150,
-                                        child: Center(
-                                            child: Text(
-                                          "Email e/ou senha inválidos",
-                                          style: TextStyle(fontSize: 20),
-                                        )),
-                                      )));
-                        }
-                      }
+                      controller.submit(error, success);
                     })
               ],
             )),

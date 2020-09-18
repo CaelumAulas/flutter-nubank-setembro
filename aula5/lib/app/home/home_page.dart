@@ -1,4 +1,3 @@
-import 'package:aula5/app/splash/splash_page.dart';
 import 'package:aula5/main.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +6,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final email = (ModalRoute.of(context).settings.arguments as Map)['email'];
     return Scaffold(
       appBar: AppBar(
         title: Text("Home Page"),
@@ -14,10 +14,12 @@ class HomePage extends StatelessWidget {
           IconButton(
               icon: Icon(Icons.exit_to_app),
               onPressed: () {
-                AppNavigator.to.pushReplacement(
-                    MaterialPageRoute(builder: (context) => SplashPage()));
+                AppNavigator.to.pushReplacementNamed("/login");
               })
         ],
+      ),
+      body: Center(
+        child: Text(email),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:aula5/app/home/home_page.dart';
 import 'package:aula5/app/login/login_page.dart';
 import 'package:aula5/app/splash/splash_page.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,12 @@ class App extends StatelessWidget {
       navigatorKey: AppNavigator.navigatorKey,
       theme:
           ThemeData(primarySwatch: Colors.orange, primaryColor: Colors.orange),
-      home: SplashPage(),
+      initialRoute: "/",
+      routes: {
+        "/": (context) => SplashPage(),
+        "/home": (context) => HomePage(),
+        "/login": (context) => LoginPage()
+      },
     );
   }
 }
