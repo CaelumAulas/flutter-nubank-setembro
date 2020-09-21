@@ -15,8 +15,8 @@ Day 5:
 6 - Implementing the Dashboard
 
 Day 6:
-7 - Implementing the entire App flow
-8 - Configuring the database
+- Uso do gerênciamento de estado na aplicação
+- ValueNotifier, ChangeNotifier
 
 Day 7:
 9 - Integrating the database with the screens
