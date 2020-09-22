@@ -1,24 +1,46 @@
+import 'package:aula7/app/home/home_event.dart';
+import 'package:aula7/app/home/home_state.dart';
+
+import 'package:flutter/foundation.dart';
 import 'package:rxdart/subjects.dart';
 
 class HomeBloc {
-  HomeBloc() {
+  final repository;
+  HomeBloc({@required this.repository}) {
     streamOut = _count.stream;
     _streamIn = _count.sink;
-    titles =
-        _count.map((event) => List.generate(event, (index) => "Count $index"));
   }
 
-  final _count = BehaviorSubject<int>.seeded(0);
-  Sink<int> _streamIn;
-  Stream<int> streamOut;
-  int get value => _count.value;
+  final _count = BehaviorSubject<HomeState>.seeded(None());
+  Sink<HomeState> _streamIn;
+  Stream<HomeState> streamOut;
 
-  Stream<List<String>> titles;
+  Future<void> _getProducts() async {
+    _streamIn.add(Loading());
+    try {
+      final response = await repository.getProducts();
+      _streamIn.add(Success(products: response));
+      return;
+    } catch (e) {
+      print(e);
+      _streamIn.add(Error(message: "Não foi possível buscar os produtos"));
+    }
+  }
 
-  void increment() {
-    var actual = value;
-    actual++;
-    _streamIn.add(actual);
+  Future<void> _deleteProduct() {
+    print("DELETADO");
+  }
+
+  void _mapToEvent(HomeEvent event) {
+    if (event is GetProducts) {
+      _getProducts();
+    } else if (event is DeleteProduct) {
+      _deleteProduct();
+    }
+  }
+
+  void update(HomeEvent event) {
+    _mapToEvent(event);
   }
 
   void dispose() {

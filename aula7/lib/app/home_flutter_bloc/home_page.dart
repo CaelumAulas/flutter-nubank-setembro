@@ -1,8 +1,10 @@
-import 'package:aula7/app/home/home_bloc.dart';
-import 'package:aula7/app/home/home_event.dart';
-import 'package:aula7/app/home/home_state.dart';
-import 'package:aula7/app/home/repositories/home_repository_impl.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'home_bloc.dart';
+import 'home_event.dart';
+import 'home_state.dart';
+import 'repositories/home_repository_impl.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,7 +21,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    bloc.dispose();
     super.dispose();
   }
 
@@ -32,15 +33,14 @@ class _HomePageState extends State<HomePage> {
           IconButton(
               icon: Icon(Icons.delete),
               onPressed: () {
-                bloc.update(DeleteProduct("id"));
+                bloc.add(DeleteProduct("id"));
               })
         ],
       ),
       body: Center(
-        child: StreamBuilder<HomeState>(
-            stream: bloc.streamOut,
-            builder: (context, snapshot) {
-              final state = snapshot.data;
+        child: BlocBuilder<HomeBloc, HomeState>(
+            cubit: bloc,
+            builder: (context, state) {
               switch (state.runtimeType) {
                 case Loading:
                   return Center(
@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
             }),
       ),
       floatingActionButton: FloatingActionButton(onPressed: () {
-        bloc.update(GetProducts());
+        bloc.add(GetProducts());
       }),
     );
   }
