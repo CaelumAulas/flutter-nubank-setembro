@@ -27,9 +27,15 @@ class _HomePageState extends State<HomePage> {
         title: Text("Home Page"),
       ),
       body: Center(
-        child: StreamBuilder<int>(
-            stream: bloc.streamOut,
-            builder: (context, snapshot) => Text("Contador ${snapshot.data}")),
+        child: StreamBuilder<List<String>>(
+            stream: bloc.titles,
+            builder: (context, snapshot) => ListView(
+                  children: snapshot.data
+                      .map((e) => ListTile(
+                            title: Text(e),
+                          ))
+                      .toList(),
+                )),
       ),
       floatingActionButton: FloatingActionButton(onPressed: bloc.increment),
     );
