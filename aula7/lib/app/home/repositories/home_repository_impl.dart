@@ -1,5 +1,5 @@
-import 'package:aula6/app/home/repositories/home_repository.dart';
-import 'package:aula6/shared/models/product.dart';
+import 'package:aula7/app/home/repositories/home_repository.dart';
+import 'package:aula7/shared/models/product.dart';
 import 'package:dio/dio.dart';
 
 class HomeRepositoryImpl implements HomeRepository {
