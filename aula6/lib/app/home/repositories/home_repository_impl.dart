@@ -1,7 +1,8 @@
+import 'package:aula6/app/home/repositories/home_repository.dart';
 import 'package:aula6/shared/models/product.dart';
 import 'package:dio/dio.dart';
 
-class HomeRepository {
+class HomeRepositoryImpl implements HomeRepository {
   final client =
       Dio(BaseOptions(baseUrl: "https://jsonplaceholder.typicode.com/"));
 

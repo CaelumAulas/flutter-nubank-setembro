@@ -1,14 +1,15 @@
-import 'package:aula6/app/home/home_repository.dart';
 import 'package:aula6/app/home/home_state.dart';
 import 'package:aula6/shared/models/product.dart';
 import 'package:flutter/foundation.dart';
 
 class HomeController {
-  final repository = HomeRepository();
+  final repository;
   final stateNotifier = ValueNotifier<HomeState>(Loading());
+
+  HomeController({@required this.repository});
   List<Product> get products => (stateNotifier.value as Success).products;
 
-  void getProducts() async {
+  Future<void> getProducts() async {
     stateNotifier.value = Loading();
     try {
       final response = await repository.getProducts();

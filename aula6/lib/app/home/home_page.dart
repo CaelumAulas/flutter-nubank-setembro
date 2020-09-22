@@ -1,7 +1,7 @@
 import 'package:aula6/app/home/home_controller.dart';
 import 'package:aula6/app/home/home_state.dart';
+import 'package:aula6/app/home/repositories/home_repository_impl.dart';
 import 'package:aula6/app/shopping/shopping_controller.dart';
-import 'package:aula6/shared/models/product.dart';
 import 'package:aula6/shared/utils/app_navigator.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final controller = HomeController();
+  final controller = HomeController(repository: HomeRepositoryImpl());
 
   @override
   void initState() {
