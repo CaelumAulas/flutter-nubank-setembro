@@ -19,12 +19,12 @@ Day 6:
 - ValueNotifier, ChangeNotifier
 
 Day 7:
-9 - Integrating the database with the screens
-10 - Completing the flow with the database
+9 - Bloc with rxDart
+10 - Flutter Bloc
 
 Day 8:
-11 - Adjusting the Dashboard
-12 - Performing http communication
+11 - Cubit
+12 - Mobx
 
 Day 9:
 12 - Performing http communication
