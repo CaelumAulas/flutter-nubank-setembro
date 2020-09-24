@@ -10,8 +10,8 @@ class AppModule extends MainModule {
   List<Bind> get binds => [Bind((i) => AutheticationController())];
 
   @override
-  List<ModularRouter> get routers => [
-        ModularRouter("/login", module: LoginModule()),
+  List<ModularModularRouter> get ModularRouters => [
+        ModularModularRouter("/login", module: LoginModule()),
       ];
 
   @override

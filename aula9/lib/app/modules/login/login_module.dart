@@ -8,8 +8,9 @@ class LoginModule extends ChildModule {
   List<Bind> get binds => [Bind((i) => LoginController(auth: i()))];
 
   @override
-  List<ModularRouter> get routers => [
-        ModularRouter(Modular.initialRoute, child: (_, __) => LoginPage()),
-        ModularRouter("/home", child: (_, __) => HomePage())
+  List<ModularModularRouter> get ModularRouters => [
+        ModularModularRouter(Modular.initialRoute,
+            child: (_, __) => LoginPage()),
+        ModularModularRouter("/home", child: (_, __) => HomePage())
       ];
 }
