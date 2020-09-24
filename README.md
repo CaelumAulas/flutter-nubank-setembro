@@ -27,8 +27,8 @@ Day 8:
 12 - Mobx
 
 Day 9:
-12 - Performing http communication
-13 - Showing web api data on the App screen
+12 - Flutter Modular
+13 - Slidy - cli
 
 Day 10:
 14 - Sending transfer to Web API

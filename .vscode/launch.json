@@ -1,0 +1,68 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "aula1",
+            "cwd": "aula1",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "aula2",
+            "cwd": "aula2",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "aula3",
+            "cwd": "aula3",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "aula4",
+            "cwd": "aula4",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "aula5",
+            "cwd": "aula5",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "aula6",
+            "cwd": "aula6",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "aula7",
+            "cwd": "aula7",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "aula9",
+            "cwd": "aula9",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "bloc",
+            "cwd": "aula8/bloc",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "mobx",
+            "cwd": "aula8/mobx",
+            "request": "launch",
+            "type": "dart"
+        }
+    ]
+}

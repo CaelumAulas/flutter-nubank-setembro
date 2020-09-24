@@ -13,6 +13,12 @@ abstract class _HomeControllerBase with Store {
   @observable
   HomeState state = None();
 
+  @observable
+  ObservableFuture products;
+  _HomeControllerBase() {
+    products = repository.getProducts().asObservable();
+  }
+
   @action
   Future<void> getProducts() async {
     state = Loading();
