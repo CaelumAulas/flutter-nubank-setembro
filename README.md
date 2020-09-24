@@ -19,16 +19,17 @@ Day 6:
 - ValueNotifier, ChangeNotifier
 
 Day 7:
-9 - Bloc with rxDart
-10 - Flutter Bloc
+- Bloc with rxDart
+- Flutter Bloc
 
 Day 8:
-11 - Cubit
-12 - Mobx
+- Cubit
+- Mobx
 
 Day 9:
-12 - Flutter Modular
-13 - Slidy - cli
+- Flutter Modular
+- Slidy - cli
+- Dio
 
 Day 10:
 14 - Sending transfer to Web API
